@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{factura.titulo}"></title>
+<link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/factura_style.css}"></link>
+</head>
+<body>
+	<article class="formulario">
+<h1 th:text="#{factura.titulo}"></h1>
+		<div>
+			<span class="total2">Cliente: </span><span th:text="${factura.cliente.nombre}"></span> <span
+				th:text="${factura.cliente.apellido}"></span>
+		</div>
+		<div>
+			<span class="total1">Datos de pago:</span>
+			<ul>
+				<li><span class="total">Tipo de Tarjeta: </span><span
+					th:text="${factura.cliente.tarjeta.Tipo}"></span></li>
+				<li><span class="total">Número: </span><span th:text="${factura.cliente.tarjeta.numero}"></span></li>
+				<li><span class="total">Mes de Caducidad: </span><span
+					th:text="${factura.cliente.tarjeta.mesCaducidad}"></span></li>
+				<li><span class="total">Año de Caducidad: </span><span
+					th:text="${factura.cliente.tarjeta.anioCaducidad}"></span></li>
+				<li><span class="total">Número Secreto: </span><span
+					th:text="${factura.cliente.tarjeta.numeroSecreto}"></span></li>
+			</ul>
+		</div>
+		<div>
+			<span class="total1">Descuentos:</span>
+			<ul>
+				<li><span class="total">Familia Numerosa: </span><span
+					th:if="${factura.cliente.familiaNumerosa}">Si</span> <span
+					th:if="!${factura.cliente.familiaNumerosa}">No</span>
+				</li>
+				<li><span class="total">Desempleado: </span><span th:if="${factura.cliente.desempleado}">Si</span>
+					<span th:if="!${factura.cliente.desempleado}">No</span>
+				</li>
+
+			</ul>
+		</div>
+	</article>
+
+	<article class="tabla">
+		<h4>Detalle de la factura</h4>
+		<table>
+			<thead>
+				<tr>
+					<th>Producto</th>
+					<th>Precio</th>
+					<th>Cantidad</th>
+					<th>IVA</th>
+					<th>Total Producto</th>
+					<th>Total Producto IVA</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item: ${factura.items}">
+					<td th:text="${item.producto.nombre}"></td>
+					<td th:text="${item.producto.precio}"></td>
+					<td th:text="${item.cantidad}"></td>
+					<td th:text="${item.producto.Tipo}"></td>
+					<td th:text="${item.calcularImporte()}"></td>
+					<td th:text="${item.calcularImporteConIVA()}"></td>
+				</tr>
+
+				<tr>
+					<td><b>Total Compra</b></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="total" th:text="${factura.descripcion}"></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</article>
+</body>
+</html>

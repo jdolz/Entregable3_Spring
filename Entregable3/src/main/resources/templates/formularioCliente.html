@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{cliente.titulo}"></title>
+<link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/cliente_style.css}"></link>
+</head>
+<body>
+	<article class="formulario">
+	<h1 th:text="#{cliente.titulo}"></h1>
+		<form class="form-grid" action="#" th:action="@{/tienda/datosTarjeta}"
+			th:object="${cliente}" method="get">
+
+			<p>
+				Nombre: <input type="text" th:field=*{nombre}>
+			</p>
+			<p>
+				Apellido: <input type="text" th:field=*{apellido}>
+			</p>
+
+			<fieldset>
+				<p>
+					<input type="checkbox" th:id="familiaNumerosa"
+						th:field="*{familiaNumerosa}" /> <label th:for="familiaNumerosa">Familia
+						Numerosa</label>
+				</p>
+
+				<p>
+					<input type="checkbox" th:id="desempleado"
+						th:field="*{desempleado}" /> <label th:for="desempleado">Desempleado</label>
+				</p>
+			</fieldset>
+
+			<p>
+				<input type="submit" value="Pagar" class="submit">
+			</p>
+
+		</form>
+	</article>
+</body>
+</html>

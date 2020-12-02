@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{tarjeta.titulo}"></title>
+<link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/tarjeta_style.css}"></link>
+</head>
+<body>
+	<article class="formulario">
+		<h1 th:text="#{tarjeta.titulo}"></h1>
+		<form action="#" th:action="@{/tienda/datosFactura}"
+			th:object="${cliente}" method="get" class="form-grid">
+			<p>
+				<select th:field="*{tarjeta.Tipo}">
+					<!-- <option th:each="tipo : ${T(com.eep.entregable3.models.domain.TiposTarjeta).values()}" 
+			th:value="${tipo}" th:text="${tipo}"></option> -->
+
+					<option th:each="tipo : ${tiposTarjeta}" th:value="${tipo}"
+						th:text="${tipo}"></option>
+
+				</select>
+			</p>
+			<p class="director">
+				Numero: <input type="text" th:field=*{tarjeta.numero}>
+			</p>
+			<p>
+				Mes Caducidad: <input type="text" th:field=*{tarjeta.mesCaducidad}>
+			</p>
+			<p>
+				Anio Caducidad: <input type="text" th:field=*{tarjeta.anioCaducidad}>
+			</p>
+			<p>
+				Numero Secreto: <input type="text" th:field=*{tarjeta.numeroSecreto}>
+			</p>
+
+			<p>
+				<input type="submit" value="Elaborar Factura" class="submit">
+			</p>
+		</form>
+	</article>
+</body>
+</html>

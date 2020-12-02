@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{carrito.titulo}"></title>
+<link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/carrito_style.css}"></link>
+</head>
+<body>
+	<article class="formulario">
+		<h1 th:text="#{carrito.titulo}"></h1>
+		<form class="form-grid" action="#" th:action="@{/tienda/comprar}"
+			th:object="${itemCarrito}" method="get">
+
+			<p>
+				Nombre: <input type="text" th:field=*{producto.nombre}>
+			</p>
+			<p>
+				Precio: <input type="number" th:field=*{producto.precio}>
+			</p>
+			<p>
+				Cantidad: <input type="number" th:field=*{cantidad}>
+			</p>
+
+			<fieldset>
+				Tipo IVA:
+				<ul>
+					<li th:each="tipo : ${tiposIVA}"><input type="radio"
+						th:field="*{producto.Tipo}" th:value="${tipo}" th:id="${tipo}" />
+						<label th:text="${tipo}" th:for="${tipo}"></label></li>
+				</ul>
+			</fieldset>
+
+			<p>
+				<input type="submit" value="Comprar" class="submit">
+			</p>
+
+		</form>
+	</article>
+	<article class="tabla">
+	
+	<!-- th:if="carrito.items.size()" -->
+		<div th:if="!${carrito.items.isEmpty()}">
+			<table>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>Tipo IVA</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item: ${carrito.items}">
+
+						<td th:text="${item.producto.nombre}"></td>
+						<td th:text="${item.producto.precio}"></td>
+						<td th:text="${item.cantidad}"></td>
+						<td th:text="${item.producto.Tipo}"></td>
+
+					</tr>
+				</tbody>
+			</table>
+
+
+			<form class="formulario" action="#" th:action="@{/tienda/formularioUsuario}"
+				method="get">
+				<p>
+					<input type="submit" value="Finalizar Compra" class="submit">
+				</p>
+			</form>
+		</div>
+	</article>
+</body>
+</html>

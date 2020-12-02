@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Yanone Kaffeesatz';
+	letter-spacing: 1.5px;
+}
+
+p > .span {
+	color: #970C0C;
+	font-size: 18px;
+}
+
+body {
+	background: #fff;
+	font-family: 'Open Sans';
+}
+
+form>fieldset>ul {
+	list-style: none;
+}
+
+.form-grid {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-rows: repeat(5, auto);
+	grid-template-columns: repeat(2, 35%);
+	justify-content: center;
+}
+.form-grid > p > select{
+	width: 70%;
+}
+fieldset {
+	width: 50%;
+	margin: auto;
+	border: 2px solid white;
+	padding: 5px;
+}
+
+fieldset>ul>li {
+	padding: 5px;
+}
+
+.formulario h1 {
+	text-align: center;
+	font-size: 40px;
+	padding: 5% 5%;
+	color: #970C0C;
+}
+
+.formulario .inputs {
+	padding: 10px;
+	border: none;
+	border-radius: 2px;
+}
+
+.inputs::-webkit-input-placeholder {
+	text-align: center;
+}
+
+.formulario .inputs:focus {
+	border: 1px solid #970C0C;
+	color: #970C0C;
+}
+
+.formulario .submit {
+	grid-column: span 2;
+	text-align: center;
+	margin: 5px 0;
+	padding: 10px;
+	width: 150px;
+	background: #970C0C;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 20px;
+	margin: 20px 0 60px 0;
+	justify-self: center;
+}
+
+.formulario .submit:hover {
+	color: #970C0C;
+	background: #fff;
+	border: 1px solid #970C0C;
+	cursor: pointer;
+}
+
+.formulario {
+	padding: 0 5% 0 5%;
+	background: #e5e5e5;
+}
+
+form p {
+	text-align: center;
+	width: 100%;
+}
+
+form p .span {
+	width: 50%;
+}
+
+form p input {
+	width: 50%;
+}
+
+form .nombre .span {
+	width: 20%;
+}
+
+form .nombre input {
+	width: 70%;
+}
+
+form .director .span {
+	width: 20%;
+}
+
+form .director input {
+	width: 65%;
+}
+
+form div {
+	display: block;
+	margin: auto;
+}
+/*###########################################*/
+.tabla {
+	padding-bottom: 5%;
+	background: #e5e5e5;
+}
+
+.tabla h1 {
+	text-align: center;
+	font-size: 40px;
+	padding: 5% 5%;
+	color: #970C0C;
+}
+
+.tabla table {
+	margin: auto;
+	border: 4px solid black;
+	border-collapse: collapse;
+}
+
+.tabla table td, th {
+	padding: 20px;
+	text-align: center;
+	border: 2px solid black;
+}
+
+.tabla table th {
+	background: #970C0C;
+}
+
+.tabla table td {
+	color: #970C0C;
+}
+
+.tabla table th:hover {
+	background: #e5e5e5;
+	color: #970C0C;
+}
+
+.tabla table td:hover {
+	color: black;
+	background: #970C0C;
+}
+/*###########################################*/
+.fa-star{
+	cursor: pointer;
+}
+.input[type = "radio"]{ display:none;}
+
+
